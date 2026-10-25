@@ -1,0 +1,28 @@
+rule_files:
+  - "alert_rules.yml"
+
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  # AI image captioning application metrics
+  - job_name: "ai_captioning"
+    static_configs:
+      - targets: ["127.0.0.1:8000"]
+
+  # Ubuntu CPU, RAM, disk, and other host metrics
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["127.0.0.1:9100"]
+
+  # Prometheus server's own health and performance
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["127.0.0.1:9090"]
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "127.0.0.1:9093"

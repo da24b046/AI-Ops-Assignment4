@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: AIops Assignment4
+    orgId: 1
+    folder: AIops Assignment4
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: false
+    options:
+      path: /var/lib/grafana/dashboards/aiops

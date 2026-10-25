@@ -1,0 +1,36 @@
+
+# Monitoring binaries and runtime data
+monitoring/bin/
+monitoring/data/
+
+# AI assistant and local development files
+.agents/
+.claude/
+backups/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Generated application outputs
+captions.csv
+test_images/
+recordings/
+*.zip
+
+# Monitoring runtime files
+monitoring/bin/
+monitoring/data/
+monitoring/alertmanager-data/
+*.log
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Hugging Face model cache
+.cache/
+*.safetensors
+*.pth
+*.pt

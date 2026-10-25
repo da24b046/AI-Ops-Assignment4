@@ -1,0 +1,51 @@
+groups:
+  - name: ai_captioning_alerts
+    interval: 5s
+    rules:
+
+      # Detect application metrics endpoint downtime.
+      - alert: AICaptioningAppDown
+        expr: up{job="ai_captioning"} == 0
+        for: 20s
+        labels:
+          severity: critical
+        annotations:
+          summary: "AI captioning application is down"
+          description: "Prometheus cannot scrape the application."
+
+      # Alert on sustained CPU utilization.
+      - alert: HighCPUUsage
+        expr: 100 * (1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))) > 80
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU utilization above 80%"
+          description: "Host CPU utilization has remained high."
+
+      # Alert on high system memory utilization.
+      - alert: HighMemoryUsage
+        expr: 100 * (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) > 85
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memory utilization above 85%"
+          description: "Available system memory is running low."
+
+      # Alert on consistently slow per-image inference.
+      - alert: SlowInference
+        expr: |
+          (
+            sum(rate(caption_inference_seconds_sum[2m]))
+            /
+            sum(rate(caption_inference_seconds_count[2m]))
+          ) > 3
+          and
+          sum(increase(caption_inference_seconds_count[2m])) >= 5
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "AI inference is slower than expected"
+          description: "Average inference latency exceeds 3 seconds."

@@ -1,0 +1,8 @@
+# DA3408 Assignment 4
+# Tested environment: Python 3.14.4
+
+streamlit==1.66.1
+transformers==5.20.2
+torch==2.13.0
+Pillow==12.3.0
+prometheus-client==0.26.0
