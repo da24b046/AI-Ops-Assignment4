@@ -70,7 +70,7 @@ AI-Ops-Assignment4/
 └── .gitignore
 ```
 
-**Not committed:** downloaded monitoring binaries, Prometheus time-series data, Alertmanager runtime data, cached model weights, the local Python environment, bulk test photographs, ZIP archives, temporary CSVs and backups. The optional `recordings/` directory may be ignored; submit the final video separately or through an appropriate delivery mechanism.
+**Not committed:** downloaded monitoring binaries, Prometheus time-series data, Alertmanager runtime data, cached model weights, the local Python environment, bulk test photographs, ZIP archives, temporary CSVs and backups.
 
 **Important:** The generator script may lag behind manual improvements to the exported JSON (particularly panels 11, 14, and 16). Treat `dashboards/aiops_caption_monitor.json` as the **authoritative final dashboard** unless you update and verify the generator produces an identical configuration.
 
